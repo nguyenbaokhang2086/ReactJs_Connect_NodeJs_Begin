@@ -1,5 +1,4 @@
-import { Plus } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import UserDialog from "@/components/UserDialog";
 
 export default function UserListHeader() {
   return (
@@ -15,10 +14,7 @@ export default function UserListHeader() {
       </div>
 
       {/* Nút Thêm mới */}
-      <Button className="bg-[#4F46E5] hover:bg-[#4338CA] text-white px-4 py-2 h-auto text-[16px] font-medium rounded-lg shadow-sm flex items-center gap-2 transition-all active:scale-95">
-        <Plus className="w-5 h-5 text-white" />
-        <span>Thêm mới</span>
-      </Button>
+      <UserDialog />
     </div>
   );
 }
