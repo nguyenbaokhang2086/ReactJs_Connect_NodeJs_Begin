@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 export default function UserListHeader() {
   return (
-    <div className="flex flex-row items-center justify-between py-6">
+    <div className="flex flex-row items-center justify-between mb-8">
       {/* Cụm Tiêu đề và Mô tả */}
       <div className="space-y-1">
         <h2 className="text-2xl font-bold tracking-tight text-[#1a2b3b]">
@@ -15,9 +15,9 @@ export default function UserListHeader() {
       </div>
 
       {/* Nút Thêm mới */}
-      <Button className="bg-[#5c59e8] hover:bg-[#4b48d1] text-white px-5 py-2.5 flex items-center gap-2 rounded-lg">
-        <Plus className="w-5 h-5" />
-        <span className="font-medium">Thêm mới</span>
+      <Button className="bg-[#4F46E5] hover:bg-[#4338CA] text-white px-4 py-2 h-auto text-[16px] font-medium rounded-lg shadow-sm flex items-center gap-2 transition-all active:scale-95">
+        <Plus className="w-5 h-5 text-white" />
+        <span>Thêm mới</span>
       </Button>
     </div>
   );

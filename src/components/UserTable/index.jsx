@@ -30,16 +30,16 @@ const UserTable = () => {
       <Table>
         <TableHeader className="bg-gray-50">
           <TableRow>
-            <TableHead className="text-[12px] font-semibold uppercase text-gray-500 py-4">
+            <TableHead className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">
               Thông tin
             </TableHead>
-            <TableHead className="text-[12px] font-semibold uppercase text-gray-500 text-center">
+            <TableHead className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">
               Tuổi
             </TableHead>
-            <TableHead className="text-[12px] font-semibold uppercase text-gray-500 text-center">
+            <TableHead className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">
               Ngày tạo
             </TableHead>
-            <TableHead className="text-[12px] font-semibold uppercase text-gray-500 text-right pr-8">
+            <TableHead className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase text-right">
               Hành động
             </TableHead>
           </TableRow>
@@ -49,21 +49,17 @@ const UserTable = () => {
             <TableRow key={i} className="hover:bg-gray-50/50 transition-colors">
               <TableCell className="py-4 px-6">
                 <div className="flex flex-col">
-                  <span className="text-base font-bold text-gray-900">
-                    {u.name}
-                  </span>
-                  <span className="text-sm text-gray-400">{u.email}</span>
+                  <span className="font-semibold text-gray-800">{u.name}</span>
+                  <span className="text-gray-500 text-xs">{u.email}</span>
                 </div>
               </TableCell>
-              <TableCell className="text-center text-gray-600 font-medium">
-                {u.age}
-              </TableCell>
-              <TableCell className="text-center text-gray-400">
+              <TableCell className="px-6 py-4 text-gray-600">{u.age}</TableCell>
+              <TableCell className="px-6 py-4 text-gray-400 text-xs font-mono">
                 {u.createdAt}
               </TableCell>
-              <TableCell className="pr-8 text-right">
-                <div className="flex justify-end gap-4">
-                  <button className="text-indigo-600 hover:opacity-70 transition-opacity">
+              <TableCell className="text-right">
+                <div className="px-6 py-4 text-right">
+                  <button className="text-indigo-600 hover:bg-indigo-50 p-2 rounded-lg transition-all mr-1">
                     <SquarePen size={20} />
                   </button>
                   <button className="text-red-600 hover:opacity-70 transition-opacity">
