@@ -122,7 +122,13 @@
   }
   body {
     @apply bg-background text-foreground;
+    padding: 16px;
     background-color: #f8fafc;
+    /* --- GIAO DIỆN IPAD (md: 768px trở lên) --- */
+    @media (min-width: 768px) {
+      padding: 24px;
+    }
+    /* --- GIAO DIỆN LAPTOP (lg: 1024px trở lên) --- */
     @media (min-width: 1024px) {
       padding: 32px;
       .App {
