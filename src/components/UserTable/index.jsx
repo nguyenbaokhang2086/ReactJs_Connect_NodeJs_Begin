@@ -11,20 +11,8 @@ import { SquarePen, Trash2 } from "lucide-react";
 import ConfirmDialog from "@/components/ConfirmDialog";
 import UserDialog from "@/components/UserDialog";
 
-const initialUsers = [
-  { id: 1, name: "Nguyễn Văn A", email: "vana@gmail.com", age: 25, createdAt: "11/03/2024" },
-  { id: 2, name: "Trần Thị B", email: "thib@example.com", age: 22, createdAt: "10/03/2024" },
-];
-
 const UserTable = () => {
-  const [users, setUsers] = React.useState(() => {
-    try {
-      const raw = localStorage.getItem("users");
-      return raw ? JSON.parse(raw) : initialUsers;
-    } catch {
-      return initialUsers;
-    }
-  });
+  const [users, setUsers] = React.useState([]);
 
   const [isConfirmOpen, setIsConfirmOpen] = React.useState(false);
   const [selectedUser, setSelectedUser] = React.useState(null);
@@ -37,26 +25,22 @@ const UserTable = () => {
     setIsConfirmOpen(true);
   };
 
- const handleAddUser = (user) => {
-  console.log("submit user:", user);
-   const createdAt = new Date().toLocaleDateString("en-GB");
-
-   setUsers((prev) => {
-     const nextId = prev.length ? Math.max(...prev.map((u) => u.id)) + 1 : 1;
-
-     return [
-       ...prev,
-       {
-         id: nextId,
-         name: user.name,
-         email: user.email,
-         age: Number(user.age),
-         createdAt,
-       },
-     ];
-   });
- };
- 
+  const handleAddUser = (user) => {
+    const createdAt = new Date().toLocaleDateString("en-GB");
+    setUsers((prev) => {
+      const nextId = prev.length ? Math.max(...prev.map((u) => u.id)) + 1 : 1;
+      return [
+        ...prev,
+        {
+          id: nextId,
+          name: user.name,
+          email: user.email,
+          age: Number(user.age),
+          createdAt,
+        },
+      ];
+    });
+  };
 
   const handleConfirmDelete = () => {
     if (!selectedUser) return;
@@ -72,15 +56,22 @@ const UserTable = () => {
   const handleUpdateUser = (updated) => {
     if (!editingUser) return;
     setUsers((prev) =>
-      prev.map((u) => (u.id === editingUser.id ? { ...u, name: updated.name, email: updated.email, age: Number(updated.age) } : u))
+      prev.map((u) =>
+        u.id === editingUser.id
+          ? {
+              ...u,
+              name: updated.name,
+              email: updated.email,
+              age: Number(updated.age),
+            }
+          : u,
+      ),
     );
   };
 
-  React.useEffect(() => {
-    console.log("saving:", users);
-    localStorage.setItem("users", JSON.stringify(users));
-  }, [users]);
+  // ...existing code...
 
+  //crate function loadUsers from localStorage => setUsers
   return (
     <>
       <ConfirmDialog
@@ -101,6 +92,8 @@ const UserTable = () => {
         submitText="Thêm mới"
         cancelText="Hủy bỏ"
         trigger={<div className="hidden"></div>}
+        setUsers={setUsers}
+        users={users}
       />
 
       {/* Dialog Edit (Không hiện trigger) */}

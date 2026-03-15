@@ -28,6 +28,7 @@ const UserDialog = ({
   triggerText = "Thêm mới",
   submitText = "Tạo mới",
   cancelText = "Hủy bỏ",
+  setUsers,
 }) => {
   const [internalOpen, setInternalOpen] = React.useState(false);
   const isControlled = open !== undefined && onOpenChange !== undefined;
@@ -47,7 +48,6 @@ const UserDialog = ({
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("submit clicked");
     onSubmit?.({ name, email, age });
     setDialogOpen(false);
   };
@@ -59,13 +59,12 @@ const UserDialog = ({
       ) : (
         <DialogTrigger asChild>
           <Button className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg shadow-sm flex items-center gap-2 transition-all">
-            
             <Plus className="w-5 h-5" />
             <span className="font-medium">{triggerText}</span>
           </Button>
         </DialogTrigger>
       )}
-      
+
       <DialogContent className="[&>button]:hidden sm:max-w-[480px] rounded-xl p-0 overflow-hidden border-none shadow-2xl bg-white">
         <DialogHeader className="px-6 py-4 border-b border-gray-300 flex flex-row justify-between items-center">
           <DialogTitle className="text-xl font-bold text-gray-800">
